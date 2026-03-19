@@ -1,0 +1,33 @@
+<?php
+
+echo "Введите фамилию: ";
+$last = trim(fgets(STDIN));
+
+echo "Введите имя: ";
+$first = trim(fgets(STDIN));
+
+echo "Введите отчество: ";
+$patr = trim(fgets(STDIN));
+
+$last  = mb_convert_case($last,  MB_CASE_TITLE, 'UTF-8');
+$first = mb_convert_case($first, MB_CASE_TITLE, 'UTF-8');
+$patr  = mb_convert_case($patr,  MB_CASE_TITLE, 'UTF-8');
+
+$fullName = $last . ' ' . $first . ' ' . $patr;
+
+$initials = 
+    mb_substr($first, 0, 1, 'UTF-8') . '.' .
+    mb_substr($patr,  0, 1, 'UTF-8') . '.';
+
+$surnameAndInitials = $last . ' ' . $initials;
+
+$fio = 
+    mb_substr($last,  0, 1, 'UTF-8') .
+    mb_substr($first, 0, 1, 'UTF-8') .
+    mb_substr($patr,  0, 1, 'UTF-8');
+
+$fio = mb_strtoupper($fio, 'UTF-8');
+
+echo "Полное имя: '$fullName'\n";
+echo "Фамилия и инициалы: '$surnameAndInitials'\n";
+echo "Аббревиатура: '$fio'\n";
